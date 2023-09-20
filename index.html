@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plan-Seq-Learn</title>
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"> -->
+
+  <!-- <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="icon" href="./favicon.ico?">
+
+
+
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="900" />
+
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body no-bottom-padding">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Plan-Seq-Learn: Language Model Guided RL for Solving Long Horizon Robotics Tasks</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <div class="columns is-centered">
+            <div class="column is-centered">
+              <video class="center" playsinline autoplay loop muted src="./resources/mm_gallery.mp4" width="100%" style="border-radius:20px;"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-two-thirds">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+            <h2 class="title is-3">Abstract</h2>
+          </div>
+      </div>
+    
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-two-thirds ">
+          <div class="content has-text-justified">
+            Large Language Models (LLMs) are highly capable of performing planning for long-horizon robotics tasks, yet existing methods require access to a pre-defined skill library (<em>e.g.</em> picking, placing, pulling, pushing, navigating).
+However, LLM planning does not address how to design or learn those behaviors, which remains challenging particularly in long-horizon settings.
+Furthermore, for many tasks of interest, the robot needs to be able to adjust its behavior in a fine-grained manner, requiring the agent to be capable of modifying <em>low-level</em> control actions. Can we instead use the internet-scale knowledge from LLMs for high-level policies, guiding reinforcement learning (RL) policies to efficiently solve robotic control tasks online without requiring a pre-determined set of skills? In this paper, we propose <strong>Plan-Seq-Learn</strong> (PSL): a modular approach that uses motion planning to bridge the gap between abstract language and learned low-level control for solving long-horizon robotics tasks from scratch. We demonstrate that PSL is capable of solving 20+ challenging single and multi-stage robotics tasks on four benchmarks at success rates of over 80% from raw visual input, out-performing language-based, classical, and end-to-end approaches. 
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Plan-Seq-Learn</h1>
+
+          <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds ">
+          <div class="content has-text-justified">
+          </div>
+        </div>
+      </div>
+          <div class="columns is-centered">
+            <div class="column is-full" style="text-align: center;">
+              <img src="resources/PSL_Method.png" alt="Image description" width="80%">
+              <br>
+              <br>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds">
+                <div class="content has-text-justified interpolation-panel">
+                    <p style="text-align: center;font-size: 18px">PSL decomposes tasks into a list of regions and stage termination conditions using an LLM (<em>top</em>), sequences the plan using motion planning (<em>left</em>) and learns control policies using RL (<em>right</em>).  </p>
+                </div>
+              </div>
+            </div>
+            <br>
+              
+            </div>
+          </div>
+         
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>PSL solves contact-rich, long-horizon manipulation tasks</strong></h3>
+          <div class="columns is-centered">
+            <div class="row">
+              <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/nut_round.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+                         <div class="content has-text-justified">
+                          <p style="text-align: center;font-size: 18px">RS-NutRound: 98% </p>
+                      </div>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/nut_square.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+                       <div class="content has-text-justified">
+                        <p style="text-align: center;font-size: 18px">RS-NutSquare: 97% </p>
+                    </div>
+            </div>
+            <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/nut_assembly.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+                     <div class="content has-text-justified">
+                      <p style="text-align: center;font-size: 18px">RS-NutAssembly: 96% </p>
+                  </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>PSL enables visuomotor policies to learn pick-and-place behaviors with 4 stages</strong></h3>
+          <div class="columns is-centered">
+            <div class="row">
+              <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/can_bread.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+                         <div class="content has-text-justified">
+                          <p style="text-align: center;font-size: 18px">RS-CanBread: 90% </p>
+                      </div>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/cereal_milk.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+                       <div class="content has-text-justified">
+                        <p style="text-align: center;font-size: 18px">RS-CerealMilk: 85% </p>
+                    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><bold>PSL efficiently solves tasks with obstructions by leveraging motion-planning</bold></h3>
+          <tr>
+            <td>
+
+              <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/mopa_push.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                           <div class="content has-text-justified">
+                            <p style="text-align: center;font-size: 18px">OS-Push: 100% </p>
+                        </div>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/mopa_lift.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+                         <div class="content has-text-justified">
+                          <p style="text-align: center;font-size: 18px">OS-Lift: 100% </p>
+                      </div>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/mopa_assembly.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+                       <div class="content has-text-justified">
+                        <p style="text-align: center;font-size: 18px">OS-Assembly: 100% </p>
+                    </div>
+            </div>
+              <br>
+              <br>
+            </td>
+          </tr>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>PSL solves long-horizon kitchen manipulation tasks with up to 5 stages.</strong></h3>
+          <div class="columns is-centered">
+            <div class="row">
+              <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/multistage_3.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+                         <div class="content has-text-justified">
+                          <p style="text-align: center;font-size: 18px">K-Multistage-3: 100% </p>
+                      </div>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/multistage_4.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+                       <div class="content has-text-justified">
+                        <p style="text-align: center;font-size: 18px">K-Multistage-4: 89% </p>
+                    </div>
+            </div>
+            <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/multistage_5.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+                     <div class="content has-text-justified">
+                      <p style="text-align: center;font-size: 18px">K-Multistage-5: 80% </p>
+                  </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section class="section" style="width: 85%; margin: 0 auto;">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-1" style="text-align: center; padding-bottom: 10px;"><bold>Extensive Emprical Evaluation</bold></h3>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds ">
+            <div class="content has-text-justified">
+          <p style="text-align: center; font-size: 22px"> PSL solves <strong>20+</strong> long-horizon robotics tasks across <strong>four</strong> benchmark environment suites with <strong>greater than 80%</strong> success rates</p>
+        </div>
+        </div>
+        </div>
+          <tr>
+            <td>
+
+              <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/bread.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/can.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/cereal.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div> 
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/milk.mp4" width="100%"
+                        style="border-radius:10px; "></video>
+                </div>          
+            </div>
+            <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/can_bread.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/cereal_milk.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/lift.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>  
+             <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/door.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>         
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/nut_round.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/nut_square.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/nut_assembly.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>  
+             <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/slider.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>         
+            </div>
+
+            <div class="row">
+              <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/tlb.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/kettle.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+            </div>
+            <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/microwave.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+           </div>  
+           <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/light.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+           </div>         
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/multistage_5.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+           </div>
+            <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/mopa_push.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+            </div>
+            <div class="col">
+              <video class="center" playsinline autoplay loop muted src="./resources/mopa_lift.mp4" width="100%"
+                     style="border-radius:10px; "></video>
+          </div>
+          <div class="col">
+            <video class="center" playsinline autoplay loop muted src="./resources/mopa_assembly.mp4" width="100%"
+                   style="border-radius:10px; "></video>
+         </div>
+
+         
+         <!-- <div class="col">
+            <video class="center" playsinline autoplay loop muted src="./resources/" width="100%"
+                   style="border-radius:10px; "></video>
+         </div>          -->
+        </div>
+            </td>
+          </tr>
+        </div> 
+      </div>
+    </div>
+  </section> -->
+
+
+
+  <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Project Video</h2>
+          </div>
+      </div>
+    
+  
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <div id="method_video" class="publication-video">
+            <iframe src="https://www.youtube.com/embed/WdMYGESu8Ak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <br />
+      <p> Template from <a href="https://nerfies.github.io"><span class="dnerf">Nerfies</span></a>.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
